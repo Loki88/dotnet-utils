@@ -1,0 +1,15 @@
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\demo.exe
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\demo.deps.json
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\demo.runtimeconfig.json
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\demo.runtimeconfig.dev.json
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\demo.dll
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\demo.pdb
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\data-structures.dll
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\data-structures.pdb
+C:\Users\thado\dotnet\dotnet-utils\demo\obj\Debug\netcoreapp3.1\demo.csprojAssemblyReference.cache
+C:\Users\thado\dotnet\dotnet-utils\demo\obj\Debug\netcoreapp3.1\demo.AssemblyInfoInputs.cache
+C:\Users\thado\dotnet\dotnet-utils\demo\obj\Debug\netcoreapp3.1\demo.AssemblyInfo.cs
+C:\Users\thado\dotnet\dotnet-utils\demo\obj\Debug\netcoreapp3.1\demo.csproj.CopyComplete
+C:\Users\thado\dotnet\dotnet-utils\demo\obj\Debug\netcoreapp3.1\demo.dll
+C:\Users\thado\dotnet\dotnet-utils\demo\obj\Debug\netcoreapp3.1\demo.pdb
+C:\Users\thado\dotnet\dotnet-utils\demo\bin\Debug\netcoreapp3.1\IntervalTree.dll

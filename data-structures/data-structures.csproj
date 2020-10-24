@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>data_structures</RootNamespace>
+    <PackageId>Loki.AlgoAndDataStructures</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Lorenzo Di Giuseppe</Authors>
+    <Company></Company>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageTags>Algorithms;Data Structures;Concurrency</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+  </ItemGroup>
+</Project>

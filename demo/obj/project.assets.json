@@ -1,0 +1,120 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "RangeTree/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/IntervalTree.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/IntervalTree.dll": {}
+        }
+      },
+      "Loki.AlgoAndDataStructures/0.1.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Loki.AlgoAndDataStructures.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Loki.AlgoAndDataStructures.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RangeTree/3.0.0": {
+      "sha512": "kMwIyiPC0FX9Yn+posRdnmXrj9PEWKp3CzWViPL3LFkyCY9Lds48M5oTkib9DXrY/z3wMqlu6YhB9KB2AexmJw==",
+      "type": "package",
+      "path": "rangetree/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net45/IntervalTree.dll",
+        "lib/net45/IntervalTree.xml",
+        "lib/netstandard1.2/IntervalTree.dll",
+        "lib/netstandard1.2/IntervalTree.xml",
+        "lib/netstandard2.0/IntervalTree.dll",
+        "lib/netstandard2.0/IntervalTree.xml",
+        "rangetree.3.0.0.nupkg.sha512",
+        "rangetree.nuspec"
+      ]
+    },
+    "Loki.AlgoAndDataStructures/0.1.0": {
+      "type": "project",
+      "path": "../data-structures/data-structures.csproj",
+      "msbuildProject": "../data-structures/data-structures.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Loki.AlgoAndDataStructures >= 0.1.0",
+      "RangeTree >= 3.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\thado\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\thado\\dotnet\\dotnet-utils\\demo\\demo.csproj",
+      "projectName": "demo",
+      "projectPath": "C:\\Users\\thado\\dotnet\\dotnet-utils\\demo\\demo.csproj",
+      "packagesPath": "C:\\Users\\thado\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\thado\\dotnet\\dotnet-utils\\demo\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\thado\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Users\\thado\\dotnet\\dotnet-utils\\data-structures\\data-structures.csproj": {
+              "projectPath": "C:\\Users\\thado\\dotnet\\dotnet-utils\\data-structures\\data-structures.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "dependencies": {
+          "RangeTree": {
+            "target": "Package",
+            "version": "[3.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

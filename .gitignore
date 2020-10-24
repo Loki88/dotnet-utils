@@ -1,0 +1,9 @@
+
+*.dll
+*.pdb
+data-structures/Debug
+data-structures/obj
+data-structures/bin
+data-structures.Test/Debug
+data-structures.Test/obj
+data-structures.Test/bin
