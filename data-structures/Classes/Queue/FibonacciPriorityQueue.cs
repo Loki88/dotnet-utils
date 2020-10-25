@@ -223,7 +223,7 @@ namespace data_structures.Classes.Queue
                     while (nodeSizeDict.TryGetValue(node.Degree, out otherNode))
                     {
                         nodeSizeDict.Remove(node.Degree);
-                        Node<J, T> mergedNode = this.MergeBinomialTrees(otherNode, node);
+                        Node<J, T> mergedNode = this.MergeBinomialTrees(node, otherNode);
                         node = mergedNode;
                     }
 
@@ -250,7 +250,7 @@ namespace data_structures.Classes.Queue
 
         internal Node<J, T> MergeBinomialTrees(Node<J, T> b1, Node<J, T> b2)
         {
-            if (b1.Key.CompareTo(b2.Key) > 0)
+            if (b1.Key.CompareTo(b2.Key) >= 0)
             {
                 b2.Children.Add(b1);
                 b1.Parent = b2;
