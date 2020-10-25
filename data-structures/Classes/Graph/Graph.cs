@@ -2,15 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using data_structures.Classes.Queue;
+using data_structures.Interfaces.Graph;
 using data_structures.Interfaces.Queue;
 
 namespace data_structures.Classes.Graph
 {
-    public class Graph<T>
+    public class Graph<T> : IGraph<T>
     {
         public delegate bool AreElementsRelated(T a, T b);
-        public delegate J ComputePriority<J>(GraphNode<T> element) where J : IComparable<J>;
-        public delegate J PriorityDecrease<J>(J currentKey, GraphNode<T> element) where J : IComparable<J>;
 
         private Dictionary<T, GraphNode<T>> NodeDict { get; set; }
 
@@ -208,7 +207,7 @@ namespace data_structures.Classes.Graph
             return cyclic;
         }
 
-        public IEnumerable<T> PriorityVisit<J>(ComputePriority<J> func, PriorityDecrease<J> decrease) where J : IComparable<J>
+        public IEnumerable<T> PriorityVisit<J>(IGraph<T>.ComputePriority<J> func, IGraph<T>.PriorityDecrease<J> decrease) where J : IComparable<J>
         {
             List<T> visitedNodes = new List<T>();
             IPriorityQueue<J, GraphNode<T>> queue = new FibonacciPriorityQueue<J, GraphNode<T>>();
