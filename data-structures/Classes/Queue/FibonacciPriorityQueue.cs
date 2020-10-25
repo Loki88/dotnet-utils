@@ -223,7 +223,7 @@ namespace data_structures.Classes.Queue
                     while (nodeSizeDict.TryGetValue(node.Degree, out otherNode))
                     {
                         nodeSizeDict.Remove(node.Degree);
-                        Node<J, T> mergedNode = this.MergeBinomialTrees(node, otherNode);
+                        Node<J, T> mergedNode = this.MergeBinomialTrees(otherNode, node);
                         node = mergedNode;
                     }
 

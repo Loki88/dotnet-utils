@@ -7,3 +7,8 @@ data-structures/bin
 data-structures.Test/Debug
 data-structures.Test/obj
 data-structures.Test/bin
+demo/.vscode
+demo/Debug
+demo/bin
+demo/obj
+.vscode

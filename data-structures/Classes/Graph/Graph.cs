@@ -56,6 +56,30 @@ namespace data_structures.Classes.Graph
             }
         }
 
+        public void Remove(T element)
+        {
+            if (this.NodeDict.ContainsKey(element))
+            {
+                GraphNode<T> node = this.NodeDict[element];
+                this.NodeDict.Remove(element);
+                this.Elements.Remove(element);
+
+                foreach (GraphNode<T> outNode in node.OutNodes)
+                {
+                    outNode.RemoveInRelation(node);
+                }
+
+                foreach (GraphNode<T> inNode in node.InNodes)
+                {
+                    inNode.RemoveOutRelation(node);
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Element does not exist.");
+            }
+        }
+
         public void AddElement(T element, IEnumerable<T> relations = null)
         {
             if (!this.NodeDict.ContainsKey(element))
@@ -114,6 +138,74 @@ namespace data_structures.Classes.Graph
             {
                 throw new System.Exception("Element does not exist.");
             }
+        }
+
+        public bool HasCycles(out HashSet<IEnumerable<T>> cycles)
+        {
+            cycles = new HashSet<IEnumerable<T>>();
+            bool cyclic = false;
+
+            if (this.Elements.Any())
+            {
+                Dictionary<GraphNode<T>, bool> visited = new Dictionary<GraphNode<T>, bool>();
+                HashSet<T> allElements = new HashSet<T>(this.Elements);
+                while (allElements.Any())
+                {
+                    T el = allElements.First();
+                    GraphNode<T> startingNode = this.NodeDict[el];
+
+
+                    Stack<GraphNode<T>> stack = new Stack<GraphNode<T>>();
+
+                    cyclic = cyclic || this.HasCycle(startingNode, ref stack, ref cycles, ref visited, ref allElements);
+                }
+            }
+
+            return cyclic;
+        }
+
+        protected bool HasCycle(GraphNode<T> node, ref Stack<GraphNode<T>> stack, ref HashSet<IEnumerable<T>> cycles, ref Dictionary<GraphNode<T>, bool> visited, ref HashSet<T> elements)
+        {
+            bool cyclic = false;
+
+            if (stack.Contains(node))
+            {
+                cyclic = true;
+
+                List<GraphNode<T>> cycle = new List<GraphNode<T>>();
+
+                while (!stack.Peek().Equals(node))
+                {
+                    cycle.Add(stack.Pop());
+                }
+                cycle.Reverse();
+
+                List<T> elCycle = new List<T>();
+                foreach (GraphNode<T> tmpNode in cycle)
+                {
+                    stack.Push(tmpNode);
+                    elCycle.Add(tmpNode.Element);
+                }
+
+                elCycle.Add(node.Element);
+                cycles.Add(elCycle);
+            }
+
+            if (!visited.ContainsKey(node) || !visited[node])
+            {
+                visited[node] = true;
+
+                stack.Push(node);
+                elements.Remove(node.Element);
+
+                foreach (GraphNode<T> inNode in node.OutNodes)
+                {
+                    cyclic = cyclic || this.HasCycle(inNode, ref stack, ref cycles, ref visited, ref elements);
+                }
+
+                stack.Pop();
+            }
+            return cyclic;
         }
 
         public IEnumerable<T> PriorityVisit<J>(ComputePriority<J> func, PriorityDecrease<J> decrease) where J : IComparable<J>

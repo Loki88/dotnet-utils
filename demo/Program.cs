@@ -72,9 +72,16 @@ namespace demo
                 new RangeElement(){
                     Name = "E",
                     Start = new DateTimeOffset(2020, 10, 24, 19, 0, 0, 0, TimeSpan.FromHours(2)),
+                    End = new DateTimeOffset(2020, 10, 24, 21, 0, 0, 0, TimeSpan.FromHours(2)),
+                    OldStart = new DateTimeOffset(2020, 10, 24, 21, 0, 0, 0, TimeSpan.FromHours(2)),
+                    OldEnd = new DateTimeOffset(2020, 10, 25, 0, 0, 0, 0, TimeSpan.FromHours(2)),
+                },
+                new RangeElement(){
+                    Name = "F",
+                    Start = new DateTimeOffset(2020, 10, 24, 21, 0, 0, 0, TimeSpan.FromHours(2)),
                     End = new DateTimeOffset(2020, 10, 25, 0, 0, 0, 0, TimeSpan.FromHours(2)),
                     OldStart = new DateTimeOffset(2020, 10, 24, 19, 0, 0, 0, TimeSpan.FromHours(2)),
-                    OldEnd = new DateTimeOffset(2020, 10, 25, 0, 0, 0, 0, TimeSpan.FromHours(2)),
+                    OldEnd = new DateTimeOffset(2020, 10, 24, 21, 0, 0, 0, TimeSpan.FromHours(2)),
                 },
             };
 
@@ -87,8 +94,25 @@ namespace demo
 
             foreach (RangeElement e in elements)
             {
-                IEnumerable<RangeElement> overlappingElements = tree.Query(e.Start, e.End).Where(x => !x.Name.Equals(e.Name));
+                IEnumerable<RangeElement> overlappingElements = tree.Query(e.Start, e.End)
+                    .Where(x => !x.Name.Equals(e.Name) && x.OldStart.CompareTo(e.End) < 0 && x.OldEnd.CompareTo(e.Start) > 0);
                 graph.AddOutgoingRelations(e, overlappingElements);
+            }
+
+            HashSet<IEnumerable<RangeElement>> cycles = null;
+            int k = 1;
+            while (graph.HasCycles(out cycles))
+            {
+                Console.WriteLine(String.Format("#{0} - Graph is cyclic. The following are cycles: ", k));
+                int j = 1;
+                foreach (IEnumerable<RangeElement> cycle in cycles)
+                {
+                    Console.WriteLine(String.Format("#{0} - {1}", j, string.Join(" -> ", cycle.Select(x => x.Name))));
+                    j++;
+                    RangeElement latest = cycle.OrderByDescending(x => x.Start).First();
+                    graph.Remove(latest);
+                }
+                k++;
             }
 
             IEnumerable<RangeElement> timeSortedChanges = graph.PriorityVisit<int>(
